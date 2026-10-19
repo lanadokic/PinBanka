@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="assets/plugins/bootstrap-4.6.1-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/plugins/fontawesome-free-5.15.4-web/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/custom.css">
+  <title>PIN banka - Korisnici</title>
+</head>
+<body>
+  <div id="main-content" style="display:none;">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+      <a class="navbar-brand" href="index.html"><i class="fas fa-university mr-2 text-primary"></i>PIN banka</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav mr-auto" id="navbar-links"></ul>
+        <button id="logout-button" class="btn btn-outline-danger btn-sm"><i class="fas fa-sign-out-alt mr-1"></i>Odjavi se</button>
+      </div>
+    </nav>
+
+    <div class="container py-4">
+      <div class="d-flex align-items-center justify-content-between mb-3">
+        <div>
+          <h1 class="h4 mb-0">Korisnici</h1>
+          <small class="text-muted">Upravljanje rolama i povezanim klijentom (OIB)</small>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="form-group mb-3">
+            <input id="search" class="form-control" placeholder="Traži korisnike... (live)">
+          </div>
+          <div class="table-responsive">
+            <table class="table table-hover" id="tbl-users">
+              <thead class="thead-dark">
+                <tr>
+                  <th>UID</th>
+                  <th>Email</th>
+                  <th>Role</th>
+                  <th>OIB (vezan klijent)</th>
+                  <th class="text-right">Akcije</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <small class="text-muted">Napomena: kreiranje Auth korisnika radi se u Firebase konzoli; ovdje se uređuje Firestore dokument users/{uid}.</small>
+        </div>
+      </div>
+
+      <!-- Modal edit user -->
+      <div class="modal fade" id="modal-user" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Uredi korisnika</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <form id="form-user">
+              <div class="modal-body">
+                <div class="alert alert-danger d-none" id="user-error"></div>
+                <div class="form-group">
+                  <label>UID</label>
+                  <input id="u_uid" class="form-control" readonly>
+                </div>
+                <div class="form-group">
+                  <label>Role</label>
+                  <select id="u_role" class="form-control" required>
+                    <option value="user">Korisnik</option>
+                    <option value="admin">Administrator (bankar)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>OIB (ako je korisnik klijent)</label>
+                  <select id="u_oib" class="form-control">
+                    <option value="">(nije vezan)</option>
+                  </select>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Odustani</button>
+                <button type="submit" class="btn btn-success">Spremi</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="assets/plugins/jquery/jquery-3.6.0.min.js"></script>
+  <script src="assets/plugins/bootstrap-4.6.1-dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="js/pages/users.js"></script>
+</body>
+</html>

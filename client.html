@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="assets/plugins/bootstrap-4.6.1-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/plugins/fontawesome-free-5.15.4-web/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/custom.css">
+  <title>PIN banka - Detalji klijenta</title>
+</head>
+<body>
+  <div id="main-content" style="display:none;">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+      <a class="navbar-brand" href="index.html"><i class="fas fa-university mr-2 text-primary"></i>PIN banka</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav mr-auto" id="navbar-links"></ul>
+        <button id="logout-button" class="btn btn-outline-danger btn-sm"><i class="fas fa-sign-out-alt mr-1"></i>Odjavi se</button>
+      </div>
+    </nav>
+
+    <div class="container py-4">
+      <div class="mb-3">
+        <a href="clients.html" class="text-muted"><i class="fas fa-arrow-left mr-1"></i>Natrag na klijente</a>
+      </div>
+
+      <div class="d-flex align-items-center justify-content-between mb-3">
+        <div>
+          <h1 class="h4 mb-0" id="client-title">Klijent</h1>
+          <small class="text-muted" id="client-sub"></small>
+        </div>
+        <button class="btn btn-primary" data-toggle="modal" data-target="#modal-account"><i class="fas fa-plus mr-1"></i>Novi račun</button>
+      </div>
+
+      <div class="card mb-3">
+        <div class="card-body" id="client-info"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="form-group mb-3">
+            <input id="search" class="form-control" placeholder="Traži račune... (live)">
+          </div>
+          <div class="table-responsive">
+            <table class="table table-hover" id="tbl-accounts">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Broj računa</th>
+                  <th>Tip</th>
+                  <th>Stanje</th>
+                  <th class="text-right">Akcije</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal račun -->
+    <div class="modal fade" id="modal-account" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modal-account-title">Novi račun</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          </div>
+          <form id="form-account">
+            <div class="modal-body">
+              <div class="alert alert-danger d-none" id="account-error"></div>
+              <div class="form-group">
+                <label>Broj računa</label>
+                <input id="a_broj" class="form-control" required placeholder="npr. HR12 2345 0000 0000 0001">
+              </div>
+              <div class="form-group">
+                <label>Tip računa</label>
+                <select id="a_type" class="form-control" required>
+                  <option value="tekuci">Tekući račun</option>
+                  <option value="ziro">Žiro račun</option>
+                </select>
+                <small class="text-muted">Početno stanje je 0 €.</small>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Odustani</button>
+              <button type="submit" class="btn btn-success">Spremi</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="assets/plugins/jquery/jquery-3.6.0.min.js"></script>
+  <script src="assets/plugins/bootstrap-4.6.1-dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="js/pages/client-details.js"></script>
+</body>
+</html>

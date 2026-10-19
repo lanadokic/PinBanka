@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="assets/plugins/bootstrap-4.6.1-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/plugins/fontawesome-free-5.15.4-web/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/custom.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+  <title>PIN banka - Transakcije</title>
+</head>
+<body>
+  <div id="main-content" style="display:none;">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+      <a class="navbar-brand" href="index.html"><i class="fas fa-university mr-2 text-primary"></i>PIN banka</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav mr-auto" id="navbar-links"></ul>
+        <button id="logout-button" class="btn btn-outline-danger btn-sm"><i class="fas fa-sign-out-alt mr-1"></i>Odjavi se</button>
+      </div>
+    </nav>
+
+    <div class="container py-4">
+      <div class="d-flex align-items-center justify-content-between mb-3">
+        <div>
+          <h1 class="h4 mb-0">Transakcije</h1>
+          <small class="text-muted">Dodaj transakciju preko tražilice klijenata</small>
+        </div>
+      </div>
+
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="h6">Nova transakcija</h5>
+          <div class="alert alert-danger d-none" id="tx-error"></div>
+          <form id="form-new">
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label>Klijent</label>
+                <select id="sel-client" class="form-control" required>
+                  <option value="">Odaberi klijenta...</option>
+                </select>
+                <small class="text-muted">Vidljivo: ime i prezime. Value: OIB.</small>
+              </div>
+              <div class="form-group col-md-4">
+                <label>Račun</label>
+                <select id="sel-account" class="form-control" required disabled>
+                  <option value="">Odaberi račun...</option>
+                </select>
+              </div>
+              <div class="form-group col-md-4">
+                <label>Datum</label>
+                <input id="t_datum" class="form-control" required placeholder="dd.mm.gggg">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label>Vrsta</label>
+                <select id="t_vrsta" class="form-control" required>
+                  <option value="uplata">Uplata</option>
+                  <option value="isplata">Isplata</option>
+                </select>
+              </div>
+              <div class="form-group col-md-4">
+                <label>Iznos</label>
+                <input id="t_iznos" type="number" step="0.01" min="0" class="form-control" required>
+              </div>
+              <div class="form-group col-md-4 d-flex align-items-end">
+                <button class="btn btn-success btn-block" type="submit"><i class="fas fa-save mr-1"></i>Spremi</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="form-group mb-3">
+            <input id="search" class="form-control" placeholder="Traži transakcije... (live)">
+          </div>
+          <div class="table-responsive">
+            <table class="table table-hover" id="tbl-tx">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Datum</th>
+                  <th>Klijent</th>
+                  <th>Broj računa</th>
+                  <th>Vrsta</th>
+                  <th>Iznos</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="assets/plugins/jquery/jquery-3.6.0.min.js"></script>
+  <script src="assets/plugins/bootstrap-4.6.1-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.hr.min.js"></script>
+  <script type="module" src="js/pages/transactions.js"></script>
+</body>
+</html>

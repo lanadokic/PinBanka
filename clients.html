@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="assets/plugins/bootstrap-4.6.1-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/plugins/fontawesome-free-5.15.4-web/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/custom.css">
+  <title>PIN banka - Klijenti</title>
+</head>
+<body>
+  <div id="main-content" style="display:none;">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+      <a class="navbar-brand" href="index.html"><i class="fas fa-university mr-2 text-primary"></i>PIN banka</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav mr-auto" id="navbar-links"></ul>
+        <button id="logout-button" class="btn btn-outline-danger btn-sm"><i class="fas fa-sign-out-alt mr-1"></i>Odjavi se</button>
+      </div>
+    </nav>
+
+    <div class="container py-4">
+      <div class="d-flex align-items-center justify-content-between mb-3">
+        <div>
+          <h1 class="h4 mb-0">Klijenti</h1>
+          <small class="text-muted">Dodavanje, ažuriranje i brisanje klijenata</small>
+        </div>
+        <button class="btn btn-primary" data-toggle="modal" data-target="#modal-client"><i class="fas fa-plus mr-1"></i>Novi klijent</button>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="form-group mb-3">
+            <input id="search" class="form-control" placeholder="Traži... (live)">
+          </div>
+          <div class="table-responsive">
+            <table class="table table-hover" id="tbl-clients">
+              <thead class="thead-dark">
+                <tr>
+                  <th>OIB</th>
+                  <th>Ime</th>
+                  <th>Prezime</th>
+                  <th>Adresa</th>
+                  <th>Telefon</th>
+                  <th>Email</th>
+                  <th class="text-right">Akcije</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Dodaj/Uredi klijenta -->
+    <div class="modal fade" id="modal-client" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modal-client-title">Novi klijent</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          </div>
+          <form id="form-client">
+            <div class="modal-body">
+              <div class="alert alert-danger d-none" id="client-error"></div>
+              <div class="form-row">
+                <div class="form-group col-md-4">
+                  <label>OIB</label>
+                  <input id="c_oib" class="form-control" required maxlength="11" placeholder="11 znamenki">
+                  <small class="text-muted">OIB je identifikator (docId u Firestore).</small>
+                </div>
+                <div class="form-group col-md-4">
+                  <label>Ime</label>
+                  <input id="c_ime" class="form-control" required>
+                </div>
+                <div class="form-group col-md-4">
+                  <label>Prezime</label>
+                  <input id="c_prezime" class="form-control" required>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label>Adresa</label>
+                  <input id="c_adresa" class="form-control" required>
+                </div>
+                <div class="form-group col-md-3">
+                  <label>Telefon</label>
+                  <input id="c_telefon" class="form-control" required>
+                </div>
+                <div class="form-group col-md-3">
+                  <label>Email</label>
+                  <input id="c_email" type="email" class="form-control" required>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Odustani</button>
+              <button type="submit" class="btn btn-success">Spremi</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="assets/plugins/jquery/jquery-3.6.0.min.js"></script>
+  <script src="assets/plugins/bootstrap-4.6.1-dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="js/pages/clients.js"></script>
+</body>
+</html>

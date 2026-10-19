@@ -1,0 +1,8 @@
+za login (firebase auth)
+za sign-in-method je odabran "username/password"
+i dodan je testni Users(user/admin):
+    username: ivan@gmail.com
+    password: 123456
+
+    username: admin@banka.hr
+
